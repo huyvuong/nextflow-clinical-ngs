@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "nextflow-clinical-ngs samplesheet schema",
+  "description": "Schema for validating clinical NGS samplesheet CSV input across germline, tumor_normal, and tumor_only analysis modes.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "sample_id",
+      "patient_id",
+      "analysis",
+      "role",
+      "fastq_1",
+      "fastq_2"
+    ],
+    "properties": {
+      "sample_id": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9_.-]+$",
+        "description": "Unique identifier for the sequencing library/sample."
+      },
+      "patient_id": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9_.-]+$",
+        "description": "Biological patient identifier used to pair tumor and normal samples."
+      },
+      "pair_id": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9_.-]+$",
+        "description": "Optional explicit analysis pairing ID when a patient has multiple tumor samples."
+      },
+      "analysis": {
+        "type": "string",
+        "enum": [
+          "germline",
+          "tumor_normal",
+          "tumor_only"
+        ],
+        "description": "Target variant calling branch for this sample."
+      },
+      "role": {
+        "type": "string",
+        "enum": [
+          "normal",
+          "tumor"
+        ],
+        "description": "Biological sample tissue role ('normal' or 'tumor')."
+      },
+      "fastq_1": {
+        "type": "string",
+        "pattern": "^\\S+\\.f(ast)?q\\.gz$",
+        "description": "Path to Read 1 gzipped FASTQ file."
+      },
+      "fastq_2": {
+        "type": "string",
+        "pattern": "^\\S+\\.f(ast)?q\\.gz$",
+        "description": "Path to Read 2 gzipped FASTQ file."
+      }
+    }
+  }
+}

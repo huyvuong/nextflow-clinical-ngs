@@ -1,0 +1,2 @@
+sample_id,patient_id,analysis,role,fastq_1,fastq_2
+G001,P001,germline,normal,data/test/fastq/g001_R1.fq.gz,data/test/fastq/g001_R2.fq.gz

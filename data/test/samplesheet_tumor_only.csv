@@ -1,0 +1,2 @@
+sample_id,patient_id,analysis,role,fastq_1,fastq_2
+TO001,P003,tumor_only,tumor,data/test/fastq/to001_R1.fq.gz,data/test/fastq/to001_R2.fq.gz

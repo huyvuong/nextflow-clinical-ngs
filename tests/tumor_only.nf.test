@@ -1,0 +1,39 @@
+nextflow_pipeline {
+    name "Test Tumor-Only Somatic Calling & Mixed Meta-Pipeline Routing"
+    script "main.nf"
+
+    test("Valid tumor-only sample generates candidate somatic VCF (-stub-run)") {
+        options "-stub-run"
+        when {
+            params {
+                input     = "${projectDir}/data/test/samplesheet_tumor_only.csv"
+                analysis  = "tumor_only"
+                reference = "${projectDir}/data/test/reference/reference.fa"
+                outdir    = "${outputDir}/results_tumor_only"
+            }
+        }
+        then {
+            assert workflow.success
+            assert path("${outputDir}/results_tumor_only/tumor_only/TO001.filtered.vcf.gz").exists()
+            assert path("${outputDir}/results_tumor_only/qc/multiqc_report.html").exists()
+        }
+    }
+
+    test("Mixed cohort (--analysis all) routes germline, tumor_normal, and tumor_only simultaneously") {
+        options "-stub-run"
+        when {
+            params {
+                input     = "${projectDir}/data/test/samplesheet.csv"
+                analysis  = "all"
+                reference = "${projectDir}/data/test/reference/reference.fa"
+                outdir    = "${outputDir}/results_all"
+            }
+        }
+        then {
+            assert workflow.success
+            assert path("${outputDir}/results_all/germline/G001.filtered.vcf.gz").exists()
+            assert path("${outputDir}/results_all/tumor_normal/P002.filtered.vcf.gz").exists()
+            assert path("${outputDir}/results_all/tumor_only/TO001.filtered.vcf.gz").exists()
+        }
+    }
+}

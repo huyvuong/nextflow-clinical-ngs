@@ -1,0 +1,19 @@
+.nextflow*
+work/
+results/
+.nf-test/
+*.log
+*.trace
+
+# WSL / Windows Alternate Data Streams
+*:Zone.Identifier
+*Zone.Identifier*
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+.pytest_cache/

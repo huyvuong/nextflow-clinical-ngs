@@ -1,0 +1,6 @@
+##fileformat=VCFv4.2
+##contig=<ID=chr22_mini,length=2400>
+##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+chr22_mini	301	rs9990301	C	T	100	PASS	AF=0.05
+chr22_mini	1801	rs9991801	T	C	100	PASS	AF=0.42

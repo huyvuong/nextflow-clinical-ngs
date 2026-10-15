@@ -1,0 +1,51 @@
+nextflow_pipeline {
+    name "Test Matched Tumor-Normal Somatic Calling Workflow"
+    script "main.nf"
+
+    test("Valid matched tumor-normal pair generates filtered somatic VCF (-stub-run)") {
+        options "-stub-run"
+        when {
+            params {
+                input     = "${projectDir}/data/test/samplesheet_tumor_normal.csv"
+                analysis  = "tumor_normal"
+                reference = "${projectDir}/data/test/reference/reference.fa"
+                outdir    = "${outputDir}/results_tumor_normal"
+            }
+        }
+        then {
+            assert workflow.success
+            assert path("${outputDir}/results_tumor_normal/tumor_normal/P002.filtered.vcf.gz").exists()
+            assert path("${outputDir}/results_tumor_normal/qc/multiqc_report.html").exists()
+        }
+    }
+
+    test("Missing normal sample in tumor_normal mode fails validation") {
+        options "-stub-run"
+        when {
+            params {
+                input     = "${projectDir}/data/test/samplesheet_invalid_missing_normal.csv"
+                analysis  = "tumor_normal"
+                reference = "${projectDir}/data/test/reference/reference.fa"
+                outdir    = "${outputDir}/results_invalid_missing_normal"
+            }
+        }
+        then {
+            assert workflow.failed
+        }
+    }
+
+    test("Mismatched patient IDs in tumor_normal mode fails pairing validation") {
+        options "-stub-run"
+        when {
+            params {
+                input     = "${projectDir}/data/test/samplesheet_invalid_mismatched_patient.csv"
+                analysis  = "tumor_normal"
+                reference = "${projectDir}/data/test/reference/reference.fa"
+                outdir    = "${outputDir}/results_invalid_mismatch"
+            }
+        }
+        then {
+            assert workflow.failed
+        }
+    }
+}

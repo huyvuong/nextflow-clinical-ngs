@@ -1,0 +1,21 @@
+nextflow_pipeline {
+    name "Test Germline Variant Calling Workflow"
+    script "main.nf"
+
+    test("Valid germline sample generates filtered germline VCF (-stub-run)") {
+        options "-stub-run"
+        when {
+            params {
+                input     = "${projectDir}/data/test/samplesheet_germline.csv"
+                analysis  = "germline"
+                reference = "${projectDir}/data/test/reference/reference.fa"
+                outdir    = "${outputDir}/results_germline"
+            }
+        }
+        then {
+            assert workflow.success
+            assert path("${outputDir}/results_germline/germline/G001.filtered.vcf.gz").exists()
+            assert path("${outputDir}/results_germline/qc/multiqc_report.html").exists()
+        }
+    }
+}

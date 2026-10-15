@@ -1,0 +1,108 @@
+{
+  "name": "nextflow-clinical-ngs",
+  "homePage": "https://github.com/huyvuong/nextflow-clinical-ngs",
+  "repos": {
+    "https://github.com/nf-core/modules.git": {
+      "modules": {
+        "nf-core": {
+          "fastqc": {
+            "branch": "master",
+            "installed_by": [
+              "modules"
+            ]
+          },
+          "fastp": {
+            "branch": "master",
+            "installed_by": [
+              "modules"
+            ]
+          },
+          "bwamem2/mem": {
+            "branch": "master",
+            "installed_by": [
+              "modules"
+            ]
+          },
+          "samtools/sort": {
+            "branch": "master",
+            "installed_by": [
+              "modules"
+            ]
+          },
+          "samtools/index": {
+            "branch": "master",
+            "installed_by": [
+              "modules"
+            ]
+          },
+          "gatk4/markduplicates": {
+            "branch": "master",
+            "installed_by": [
+              "modules"
+            ]
+          },
+          "gatk4/baserecalibrator": {
+            "branch": "master",
+            "installed_by": [
+              "modules"
+            ]
+          },
+          "gatk4/applybqsr": {
+            "branch": "master",
+            "installed_by": [
+              "modules"
+            ]
+          },
+          "gatk4/haplotypecaller": {
+            "branch": "master",
+            "installed_by": [
+              "modules"
+            ]
+          },
+          "gatk4/genotypegvcfs": {
+            "branch": "master",
+            "installed_by": [
+              "modules"
+            ]
+          },
+          "gatk4/mutect2": {
+            "branch": "master",
+            "installed_by": [
+              "modules"
+            ]
+          },
+          "gatk4/getpileupsummaries": {
+            "branch": "master",
+            "installed_by": [
+              "modules"
+            ]
+          },
+          "gatk4/calculatecontamination": {
+            "branch": "master",
+            "installed_by": [
+              "modules"
+            ]
+          },
+          "gatk4/filtermutectcalls": {
+            "branch": "master",
+            "installed_by": [
+              "modules"
+            ]
+          },
+          "ensemblvep/vep": {
+            "branch": "master",
+            "installed_by": [
+              "modules"
+            ]
+          },
+          "multiqc": {
+            "branch": "master",
+            "installed_by": [
+              "modules"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

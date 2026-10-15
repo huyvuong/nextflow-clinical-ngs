@@ -1,0 +1,5 @@
+sample_id,patient_id,analysis,role,fastq_1,fastq_2
+G001,P001,germline,normal,data/test/fastq/g001_R1.fq.gz,data/test/fastq/g001_R2.fq.gz
+TN001_T,P002,tumor_normal,tumor,data/test/fastq/tn001_t_R1.fq.gz,data/test/fastq/tn001_t_R2.fq.gz
+TN001_N,P002,tumor_normal,normal,data/test/fastq/tn001_n_R1.fq.gz,data/test/fastq/tn001_n_R2.fq.gz
+TO001,P003,tumor_only,tumor,data/test/fastq/to001_R1.fq.gz,data/test/fastq/to001_R2.fq.gz
