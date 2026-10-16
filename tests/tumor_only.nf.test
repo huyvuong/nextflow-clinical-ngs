@@ -5,6 +5,7 @@ nextflow_pipeline {
     test("Valid tumor-only sample generates candidate somatic VCF (-stub-run)") {
         options "-stub-run"
         when {
+            "ln -sfn ${projectDir}/data ${outputDir}/../data".execute().waitFor()
             params {
                 input     = "${projectDir}/data/test/samplesheet_tumor_only.csv"
                 analysis  = "tumor_only"
@@ -22,6 +23,7 @@ nextflow_pipeline {
     test("Mixed cohort (--analysis all) routes germline, tumor_normal, and tumor_only simultaneously") {
         options "-stub-run"
         when {
+            "ln -sfn ${projectDir}/data ${outputDir}/../data".execute().waitFor()
             params {
                 input     = "${projectDir}/data/test/samplesheet.csv"
                 analysis  = "all"

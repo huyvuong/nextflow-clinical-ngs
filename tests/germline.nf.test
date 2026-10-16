@@ -5,6 +5,7 @@ nextflow_pipeline {
     test("Valid germline sample generates filtered germline VCF (-stub-run)") {
         options "-stub-run"
         when {
+            "ln -sfn ${projectDir}/data ${outputDir}/../data".execute().waitFor()
             params {
                 input     = "${projectDir}/data/test/samplesheet_germline.csv"
                 analysis  = "germline"

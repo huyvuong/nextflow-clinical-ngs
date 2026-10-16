@@ -5,6 +5,7 @@ nextflow_pipeline {
     test("Valid matched tumor-normal pair generates filtered somatic VCF (-stub-run)") {
         options "-stub-run"
         when {
+            "ln -sfn ${projectDir}/data ${outputDir}/../data".execute().waitFor()
             params {
                 input     = "${projectDir}/data/test/samplesheet_tumor_normal.csv"
                 analysis  = "tumor_normal"
